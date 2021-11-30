@@ -9,9 +9,22 @@ class Company extends Model
 {
     use HasFactory;
 
-    protected $table = 'aerolinea';
+    protected $table = 'aerolineas';
 
     protected $fillable = [
-        'nombre', 'descripcion', 'disponibilidad'
+        'nombre', 'descripcion','city_id', 'disponibilidad'
     ];
+
+     public function city()
+    {
+        return $this->belongsTo(City::class);
+
+    }
+    
+    public function vuelo()
+    {
+        return $this->hasMany(Vuelo::class);
+    }
+    
+
 }

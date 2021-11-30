@@ -8,7 +8,7 @@
             <h2>Companies</h2>
         </div>
         <div class="pull-right">
-            <a class="btn btn-success" href="{{ route('company.create') }}"> Crear una nueva ciudad</a>
+            <a class="btn btn-success" href="{{ route('company.create') }}"> Crear una nueva aerolinea</a>
         </div>
     </div>
 </div>

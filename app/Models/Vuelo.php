@@ -5,20 +5,18 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class City extends Model
+    class Vuelo extends Model
 {
     use HasFactory;
 
-    protected $table = 'ciudades';
+    protected $table = 'vuelos';
 
     protected $fillable = [
-        'nombre'
+        'name_aerolinea_id', 'hora_despegue', 'hora_llegada', 'ciudad_llegada', 'ciudad_destino'
     ];
 
     public function company()
     {
-        return $this->hasMany(Company::class);
+        return $this->belongsTo(Company::class);
     }
-
-
 }

@@ -1,13 +1,13 @@
-@extends('city.layout')
+@extends('Vuelo.layout')
   
 @section('content')
 <div class="row">
     <div class="col-lg-12 margin-tb">
         <div class="pull-left">
-            <h2>Add New City</h2>
+            <h2>Add New Vuelo</h2>
         </div>
         <div class="pull-right">
-            <a class="btn btn-primary" href="{{ route('city.index') }}"> Back</a>
+            <a class="btn btn-primary" href="{{ route('vuelo.index') }}"> Back</a>
         </div>
     </div>
 </div>
@@ -23,13 +23,13 @@
     </div>
 @endif
    
-<form action="{{ route('city.store') }}" method="POST">
+<form action="{{ route('vuelo.store') }}" method="POST">
     @csrf
   
      <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
-                <strong>Nombre:</strong>
+                <strong>Nombre:</strong> 
                 <input type="text" name="nombre" class="form-control" placeholder="Enter Name">
             </div>
         </div>

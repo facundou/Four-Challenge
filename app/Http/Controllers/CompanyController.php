@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Company;
+use App\Models\City;
 use App\Http\Controllers\Controller;
 use Database\Seeders\City as SeedersCity;
 use Illuminate\Http\Request;
@@ -29,10 +30,14 @@ class CompanyController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Company $company, City $city)
     {
-        return view('company.create');
+        $company = $company->all();
+        $cities = $city->all();
+        return view('company.create', compact('airlines', 'cities'));
+
     }
+    
 
     /**
      * Store a newly created resource in storage.
@@ -40,12 +45,14 @@ class CompanyController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, City $city)
     {
+    
          $request->validate([
-            'nombre' => 'required',
-            'descripcion' => 'required',
-            'disponibilidad' => 'required'
+            'nombre' => 'required|string|max:100',
+            'descripcion' => 'required|string|max:255',
+            'disponibilidad' => 'required|boolean'
+c
         ]);
     
         Company::create($request->all());

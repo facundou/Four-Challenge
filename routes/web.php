@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CityController;
 use App\Http\Controllers\CompanyController;
+use App\Http\Controllers\VueloController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -22,3 +24,6 @@ Route::get('/', function () {
 Route::resource('city', CityController::class);
 
 Route::resource('company', CompanyController::class);
+
+Route::resource('vuelo', VueloController::class);
+

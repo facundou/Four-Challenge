@@ -14,21 +14,24 @@ class CreatePostTbl extends Migration
     public function up()
     {
 
-        Schema::create('aerolinea', function (Blueprint $table) {
+        Schema::create('ciudades', function (Blueprint $table) {
+            $table->id('id');
+            $table->string('nombre');
+            $table->timestamps();
+        });
+        Schema::create('aerolineas', function (Blueprint $table) {
             $table->id('id');
             $table->string('nombre');
             $table->string('descripcion');
+            $table->unsignedbigInteger('city_id');
             $table->boolean('disponibilidad');
             $table->timestamps();
+
+            $table->foreign('city_id')->references('id')->on('ciudades');
         });
-        Schema::create('cities', function (Blueprint $table) {
-            $table->id('id');
-            $table->string('nombre');
-            $table->timestamps();
-        });
-        Schema::create('fly', function (Blueprint $table) {
+        Schema::create('vuelos', function (Blueprint $table) {
             $table->unsignedBigInteger('id');
-            $table->unsignedBigInteger('name_aerolinea');
+            $table->unsignedBigInteger('name_aerolinea_id');
             $table->date('hora_despegue');
             $table->date('hora_llegada');
             $table->unsignedBigInteger('ciudad_origen');
@@ -36,17 +39,17 @@ class CreatePostTbl extends Migration
 
             $table->foreign('ciudad_origen')
             ->references('id')
-            ->on('cities');
+            ->on('ciudades');
 
             $table->foreign('ciudad_destino')
             ->references('id')
-            ->on('cities');
+            ->on('ciudades');
             
-            $table->foreign('name_aerolinea')
+            $table->foreign('name_aerolinea_id')
             ->references('id')
-            ->on('aerolinea');
+            ->on('aerolineas');
 
-            $table->primary(['name_aerolinea', 'id']); 
+            $table->primary(['name_aerolinea_id', 'id']); 
 
 
             $table->timestamps();
@@ -65,7 +68,7 @@ class CreatePostTbl extends Migration
     public function down()
     {   
         Schema::dropIfExists('aerolinea');
-        Schema::dropIfExists('cities');
-        Schema::dropIfExists('fly');
+        Schema::dropIfExists('ciudades');
+        Schema::dropIfExists('vuelos');
     }
 }
