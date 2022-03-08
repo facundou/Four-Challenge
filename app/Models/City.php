@@ -17,7 +17,7 @@ class City extends Model
 
     public function company()
     {
-        return $this->belongsTo(Company::class, 'city_id');
+        return $this->belongsToMany(Company::class);
     }
 
 

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Company;
+use App\Models\City;
 use App\Models\Vuelo;
 use App\Http\Controllers\Controller;
 use Database\Seeders\City as SeedersCity;
@@ -29,9 +31,12 @@ class VueloController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Company $company, City $city)
     {
-        return view('vuelo.create');
+        $company = $company::all();
+        $cities = $city::all();
+        return view('vuelo.create', compact('company', 'cities'));
+
     }
 
     /**
@@ -54,7 +59,7 @@ class VueloController extends Controller
         Vuelo::create($request->all());
      
         return redirect()->route('vuelo.index')
-                        ->with('success','City created successfully.');
+                        ->with('success','Vuelo created successfully.');
     }
 
     /**
@@ -63,8 +68,10 @@ class VueloController extends Controller
      * @param  \App\Models\Vuelo  $City
      * @return \Illuminate\Http\Response
      */
-    public function show(Vuelo $vuelo)
+    public function show(Vuelo $vuelo )
     {
+    
+    
         return view('vuelo.show',compact('vuelo'));
     }
     

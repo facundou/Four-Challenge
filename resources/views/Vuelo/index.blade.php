@@ -32,7 +32,7 @@
         @foreach ($data as $vuelo)
         <tr>
             <td>{{ $vuelo->id }}</td>
-            <td>{{ $vuelo->name_aerolinea }}</td>
+            <td>{{ $vuelo->name_aerolinea_id }}</td>
             <td>{{ $vuelo->hora_despegue }}</td>
             <td>{{ $vuelo->hora_llegada }}</td>
             <td>{{ $vuelo->ciudad_origen }}</td>

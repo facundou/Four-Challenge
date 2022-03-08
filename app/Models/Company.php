@@ -17,13 +17,13 @@ class Company extends Model
 
      public function city()
     {
-        return $this->belongsTo(City::class, 'city_id');
+        return $this->belongsToMany(City::class);
 
     }
     
     public function vuelo()
     {
-        return $this->hasMany(Vuelo::class);
+        return $this->belongsToMany(Vuelo::class);
     }
     
 

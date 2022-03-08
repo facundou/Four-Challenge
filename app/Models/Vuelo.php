@@ -17,6 +17,17 @@ use Illuminate\Database\Eloquent\Model;
 
     public function company()
     {
-        return $this->belongsTo(Company::class);
+        return $this->belongsToMany(Company::class);
+    }
+
+    public function city()
+    {
+        return $this->belongsToMany(City::class);
+    }
+
+    public function city_company()
+    {
+        return $this->hasMany(CityCompany::class);
     }
 }
+

@@ -31,21 +31,20 @@ class CreatePostTbl extends Migration
             $table->foreign('city_id')->references('id')->on('ciudades');
         });
 
-        Schema::create('company-city', function (Blueprint $table) {
+        Schema::create('city_company', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('company_id');
             $table->unsignedBigInteger('city_id');
 
             $table->foreign('company_id')->references('id')->on('aerolineas');
             $table->foreign('city_id')->references('id')->on('ciudades');
-
             $table->timestamps();
         });
 
         Schema::create('vuelos', function (Blueprint $table) {
             $table->unsignedBigInteger('id');
             $table->unsignedBigInteger('name_aerolinea_id');
-            $table->date('hora_despegue');
+            $table->timestamp('hora_despegue');
             $table->date('hora_llegada');
             $table->unsignedBigInteger('ciudad_origen');
             $table->unsignedBigInteger('ciudad_destino');

@@ -19,6 +19,7 @@ class CompanyController extends Controller
      */
     public function index()
     {
+        
         $data = Company::latest()->paginate(5);
     
         return view('company.index',compact('data'))
@@ -54,9 +55,9 @@ class CompanyController extends Controller
             'disponibilidad' => 'required|boolean',
             'city_id' => 'required|integer',
         ]);
-    
-        Company::create($request->all());
-     
+        
+        $company = Company::create($request->all());
+        $company->city()->attach($request->city_id);
         return redirect()->route('company.index')
                         ->with('success','Company created successfully.');
     }

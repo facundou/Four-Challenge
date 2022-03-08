@@ -25,14 +25,51 @@
    
 <form action="{{ route('vuelo.store') }}" method="POST">
     @csrf
-  
-     <div class="row">
+    <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
-                <strong>Nombre:</strong> 
-                <input type="text" name="nombre" class="form-control" placeholder="Enter Name">
+                <strong>Company:</strong>
+                <select name="company_id" class="form-control">
+            @foreach($company as $companies)
+                    <option value="{{$companies->id}}">{{$companies->nombre}}</option>
+                    @endforeach
+                </select>
             </div>
         </div>
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-group">
+                <strong>Fecha de Salida:</strong>
+                <input type="date" name="fecha_salida" class="form-control" placeholder="Fecha de Salida">
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-group">
+                <strong>Fecha de Llegada:</strong>
+                <input type="date" name="fecha_llegada" class="form-control" placeholder="Fecha de Llegada">
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-group">
+                <strong>Hora de Salida:</strong>
+                <input type="time" name="hora_salida" class="form-control" placeholder="Hora de Salida">
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-group">
+                <strong>Hora de Llegada:</strong>
+                <input type="time" name="hora_llegada" class="form-control" placeholder="Hora de Llegada">
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-group">
+                <strong>Ciudad de destino:</strong>
+                <select name="city_id_desti" class="form-control">
+                    @foreach($cities as $cities)
+                            <option value="{{$cities->id}}">{{$cities->nombre}}</option>
+                            @endforeach
+                        </select>
+            </div>
+            </div>
         <div class="col-xs-12 col-sm-12 col-md-12 text-center">
                 <button type="submit" class="btn btn-primary">Submit</button>
         </div>

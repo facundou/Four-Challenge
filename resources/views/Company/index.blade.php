@@ -33,7 +33,9 @@
     <tr>
         <td>{{ $company->id }}</td>
         <td>{{ $company->nombre }}</td>
-        <td>{{ $company->all()}}</td>
+        @foreach($company->city as $ciudad)
+        <td>{{ $ciudad->nombre }}</td>
+        @endforeach
         <td>{{ $company->descripcion }}</td>
         <td>@if($company->disponibilidad == 1)
                 <span class="label label-success">Disponible</span>
