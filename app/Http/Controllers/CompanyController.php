@@ -34,7 +34,7 @@ class CompanyController extends Controller
     {
         $company = $company->all();
         $cities = $city->all();
-        return view('company.create', compact('airlines', 'cities'));
+        return view('company.create', compact('company', 'cities'));
 
     }
     
@@ -45,14 +45,14 @@ class CompanyController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, City $city)
+    public function store(Request $request)
     {
     
          $request->validate([
             'nombre' => 'required|string|max:100',
             'descripcion' => 'required|string|max:255',
-            'disponibilidad' => 'required|boolean'
-c
+            'disponibilidad' => 'required|boolean',
+            'city_id' => 'required|integer',
         ]);
     
         Company::create($request->all());

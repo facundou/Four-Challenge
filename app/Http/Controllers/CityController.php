@@ -19,7 +19,6 @@ class CityController extends Controller
     public function index()
     {
         $data = City::latest()->paginate(5);
-    
         return view('city.index',compact('data'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
     }

@@ -5,7 +5,7 @@
 <div class="row" style="margin-top: 5rem;">
     <div class="col-lg-12 margin-tb">
         <div class="pull-left">
-            <h2>Companies</h2>
+            <h2>Aerolineas</h2>
         </div>
         <div class="pull-right">
             <a class="btn btn-success" href="{{ route('company.create') }}"> Crear una nueva aerolinea</a>
@@ -24,6 +24,7 @@
     <tr>
         <th>No</th>
         <th>Nombre</th>
+        <th>Ciudad aerolinea</th>
         <th>Descripcion</th>
         <th>Disponibilidad</th>
         <th width="280px">Acciones</th>
@@ -32,6 +33,7 @@
     <tr>
         <td>{{ $company->id }}</td>
         <td>{{ $company->nombre }}</td>
+        <td>{{ $company->all()}}</td>
         <td>{{ $company->descripcion }}</td>
         <td>@if($company->disponibilidad == 1)
                 <span class="label label-success">Disponible</span>

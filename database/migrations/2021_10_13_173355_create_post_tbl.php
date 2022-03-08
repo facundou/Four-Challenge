@@ -25,10 +25,23 @@ class CreatePostTbl extends Migration
             $table->string('descripcion');
             $table->unsignedbigInteger('city_id');
             $table->boolean('disponibilidad');
+            
             $table->timestamps();
 
             $table->foreign('city_id')->references('id')->on('ciudades');
         });
+
+        Schema::create('company-city', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->unsignedBigInteger('company_id');
+            $table->unsignedBigInteger('city_id');
+
+            $table->foreign('company_id')->references('id')->on('aerolineas');
+            $table->foreign('city_id')->references('id')->on('ciudades');
+
+            $table->timestamps();
+        });
+
         Schema::create('vuelos', function (Blueprint $table) {
             $table->unsignedBigInteger('id');
             $table->unsignedBigInteger('name_aerolinea_id');
@@ -50,7 +63,6 @@ class CreatePostTbl extends Migration
             ->on('aerolineas');
 
             $table->primary(['name_aerolinea_id', 'id']); 
-
 
             $table->timestamps();
         });

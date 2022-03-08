@@ -50,6 +50,14 @@
                  </div>
 
             </div>
+            
+            <div class="col-xs-12 col-sm-12 col-md-12 text-center">        
+            <select class="form-control" name="city_id" id="disponibility">
+             @foreach ($cities as $city)
+                    <option value="{{$city->id}}">{{$city->nombre}}</option>
+             @endforeach
+           </select>
+            </div>
             <div class="col-xs-12 col-sm-12 col-md-12 text-center">
               <button type="submit" class="btn btn-primary">Submit</button>
             </div>
